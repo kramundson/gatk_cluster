@@ -61,7 +61,13 @@ For testing, I symlinked these 3 bams from ```/share/comailab/ajfirl/haplotyping
 * bamaddrg_S12.sorted.bam
 
 3. Edit ```config.yaml``` to suit your needs. At a minimum, you will need to specify the
-path to the .jar for running GATK as the jarpath parameter
+path to the .jar for running GATK as the jarpath parameter. If conda was installed and the
+environment built as described above, the path, including the .jar itself, should be
+something like this:
+
+```
+~/miniconda3/envs/gatk4_snek/share/gatk4-4.0.1.2-0/gatk-package-4.0.1.2-local.jar
+```
 
 4. Edit ```cluster.yaml``` to suit your cluster resource allocation needs for each type of
 job. The current allocation works as-is but has not been optimized for performance.
