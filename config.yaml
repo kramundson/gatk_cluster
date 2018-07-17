@@ -1,0 +1,27 @@
+genome: "ref/header-sec-mint-12big_apple_mint_dec.fasta"
+
+intervals: "ref/gatk-haplocaller.intervals"
+
+params:
+
+    gatk_haplotypecaller_diploid:
+        opt: "-ERC GVCF --heterozygosity 0.01 --indel-heterozygosity 0.001 -ploidy 2 --kmer-size 25 --kmer-size 51 --kmer-size 71"
+        threads: 1
+    
+    gatk_haplotypecaller_tetraploid:
+        opt: "-ERC GVCF --heterozygosity 0.01 --indel-heterozygosity 0.001 -ploidy 4 --kmer-size 25 --kmer-size 51 --kmer-size 71"
+        threads: 1
+    
+    gather_gvcfs:
+        
+        # EDIT JARPATH!
+        jarpath: "/home/kramundson/miniconda3/envs/gatk-potato/share/gatk4-4.0.1.2-0/gatk-package-4.0.1.2-local.jar"
+        java_heap: "-Xms512m -Xmx12g"
+        opt: "--VERBOSITY=INFO --QUIET=false --VALIDATION_STRINGENCY=STRICT --COMPRESSION_LEVEL=1 --MAX_RECORDS_IN_RAM=500000 --CREATE_INDEX=true --CREATE_MD5_FILE=false --GA4GH_CLIENT_SECRETS=client_secrets.json --help=false --version=false --showHidden=false --USE_JDK_DEFLATER=false --USE_JDK_INFLATER=false"
+    
+    gatk_genotype_gvcfs:
+
+        # EDIT JARPATH!
+        jarpath: "/home/kramundson/miniconda3/envs/gatk-potato/share/gatk4-4.0.1.2-0/gatk-package-4.0.1.2-local.jar"
+        java_heap: "-Xms512m -Xmx12g"
+        opt: "--heterozygosity 0.01 --indel-heterozygosity 0.001"

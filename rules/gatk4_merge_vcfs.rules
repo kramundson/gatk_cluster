@@ -1,0 +1,16 @@
+rule gatk4_merge_vcfs:
+    input:
+        vcfs = get_vcfs
+    output:
+        "calls/all-calls.vcf"
+    params:
+        jarpath = config["params"]["gather_gvcfs"]["jarpath"],
+        java_heap = config["params"]["gather_gvcfs"]["java_heap"],
+    log:
+        "logs/gatk/all-samples-cat.log"
+    shell: """
+        java {params.java_heap} -jar {params.jarpath} GatherVcfs \
+        $(echo {input} | sed 's/calls/I=calls/g') \
+        --O={output} \
+        2> {log}
+    """

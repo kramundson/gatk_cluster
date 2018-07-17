@@ -1,0 +1,13 @@
+rule gatk4_merge_gvcfs_by_region:
+    input:
+        ref = config["genome"],
+        gvcfs = lambda x: [line.rstrip('\n') for line in open("fofn/all-samples-{}.fofn".format(x.region))]
+    output:
+        "calls/2_gvcf_interval/all-samples-{region}.g.vcf"
+    log:
+        "logs/gatk/combine_{region}_calls.log"
+    shell: """
+        gatk-launch CombineGVCFs -R {input.ref} \
+        $(echo {input.gvcfs} | sed 's/calls/ --variant calls/g' \
+        -O {output} 2> {log}
+    """

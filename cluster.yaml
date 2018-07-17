@@ -1,0 +1,58 @@
+{
+    "__default__" :
+    {
+        "account" : "kramundson",
+        "time" : "12:00:00",
+        "c" : 1,
+        "n" : 1,
+        "partition" : "gc",
+        "mempercpu" : "2G"
+    },
+    "bwa_index" :
+    { default },
+    "samtools_index":
+    { default },
+    "samtools_faidx":
+    { default },
+    "gatk4_fasta_dict" :
+    { default },
+    "make_intervals" :
+    { default },
+    "gatk4_parallel_fofns" :
+    { default },
+    "gatk4_haplotypecaller_diploid_cluster" :
+    {
+        "N" : 1,
+        "c" : 1,
+        "mempercpu" : "16G",
+        "time" : "3-00:00:00"
+    },
+    "gatk4_haplotypecaller_tetraploid_cluster" :
+    {
+        "N" : 1,
+        "c" : 1,
+        "mempercpu" : "16G",
+        "time" : "3-00:00:00"
+    },
+    "gatk4_merge_gvcfs_by_region" :
+    {
+    "N" : 1,
+    "c" : 1,
+    "mempercpu" : "16G",
+    "time" : "1-00:00:00"
+    },
+    "gatk4_genotype_region_gvcfs" :
+    {
+        "N" : 1,
+        "c" : 1,
+        "mempercpu" : "16G",
+        "time" : "2-00:00:00"
+    },
+    "gatk4_merge_vcfs" :
+    {
+        "N" : 1,
+        "c" : 1,
+        "mempercpu" : "16G",
+        "time" : "1-00:00:00"
+    }
+}

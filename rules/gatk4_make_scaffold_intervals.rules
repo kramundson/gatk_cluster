@@ -1,0 +1,21 @@
+rule gatk4_make_scaffold_intervals:
+    input:
+        config["genome"]
+    output:
+        config["intervals"]
+    run:
+        ofh = output[0]
+        o = open(ofh, 'w')
+        with open(input[0]) as handle:
+            for record in SeqIO.parse(handle, 'fasta'):
+                start = 1
+                outputstr = ""
+                
+                # divide by 1,000 N scaffold joins
+                for match in re.finditer('N{1000}', str(record.seq)):
+                    outputstr += "{}_{}_{}\n".format(record.id, start, match.start())
+                    start = match.end() + 1
+                
+                # handle last nongap interval
+                outputstr += "{}_{}_{}\n".format(record.id, start, len(record))
+                o.write(outputstr)
