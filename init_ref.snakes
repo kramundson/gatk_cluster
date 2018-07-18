@@ -13,7 +13,6 @@ rule all:
         config["intervals"],
         "fofn/all-fofns.made"
 
-include: "rules/clean_fasta_header.rules"
 include: "rules/bwa_index.rules"
 include: "rules/samtools_faidx.rules"
 include: "rules/gatk4_fasta_dict.rules"
