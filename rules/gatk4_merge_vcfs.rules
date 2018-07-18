@@ -10,7 +10,7 @@ rule gatk4_merge_vcfs:
         "logs/gatk/all-samples-cat.log"
     shell: """
         java {params.java_heap} -jar {params.jarpath} GatherVcfs \
-        $(echo {input} | sed 's/calls/I=calls/g') \
+        $(echo {input} | sed 's/calls/-I=calls/g') \
         --O={output} \
         2> {log}
     """
