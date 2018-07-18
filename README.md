@@ -30,8 +30,8 @@ source  $HOME/.bashrc
 2. Clone this repo
 
 ```
-git clone https://github.com/kramundson/gatk4_snek
-cd gatk4_snek
+git clone https://github.com/kramundson/gatk4_cluster
+cd gatk4_cluster
 ```
 
 3. Build environment using gatk4_snek.yaml
