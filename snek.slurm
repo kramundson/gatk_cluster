@@ -19,7 +19,7 @@ CONDA="gatk4_snek"
 cd $WORKDIR
 source activate $CONDA
 
-snakemake -j 7 -s init_genome.snakes --cluster-config cluster.yaml --cluster "sbatch -p {cluster.partition} -n {cluster.n} -t {cluster.time} -c {cluster.c} --mem-per-cpu {cluster.mempercpu}" -k -w 120
+snakemake -j 7 -s init_ref.snakes --cluster-config cluster.yaml --cluster "sbatch -p {cluster.partition} -n {cluster.n} -t {cluster.time} -c {cluster.c} --mem-per-cpu {cluster.mempercpu}" -k -w 120
 snakemake -j 999 --rerun-incomplete --cluster-config cluster.yaml --cluster "sbatch -p {cluster.partition} -n {cluster.n} -t {cluster.time} -c {cluster.c} --mem-per-cpu {cluster.mempercpu}" -k -w 120
 
 source deactivate $CONDA
